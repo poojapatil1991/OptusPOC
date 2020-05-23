@@ -31,7 +31,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:src="@mipmap/ic_launcher_round" />
+                android:src="@{albumDetailsViewModel.thumbnailUrl}" />
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_name"
                 android:layout_width="0dp"

@@ -1,10 +1,16 @@
 package com.example.optusdemo.utils
 
+import android.app.ProgressDialog
+import android.util.Log
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.databinding.BindingAdapter
-import com.bumptech.glide.Glide
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.example.optusdemo.R
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
+import java.lang.Exception
+
 
 /*Class to download images from server
 Used Glide library, it provides lazy loading and caching
@@ -18,13 +24,17 @@ object GlideImageDownloader {
         circularProgressDrawable.strokeWidth = 5f
         circularProgressDrawable.centerRadius = 20f
         circularProgressDrawable.start()
-
         if (url != null && url.isNotEmpty() && url != "") {
-            Glide.with(OptusDemoApplication.context).load(url).error(R.mipmap.ic_launcher)
-                .placeholder(circularProgressDrawable).into(img)
+            Picasso.get()
+                .load(url)
+                .placeholder(circularProgressDrawable)
+                .error(R.mipmap.ic_launcher)
+                .into(img)
         } else {
-            Glide.with(OptusDemoApplication.context).load(R.mipmap.ic_launcher)
-                .placeholder(circularProgressDrawable).into(img)
+            Picasso.get()
+                .load(R.mipmap.ic_launcher)
+                .into(img);
         }
     }
+
 }

@@ -13,7 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".albumList.view.AlbumListActivity"></activity>
+        <activity
+            android:theme="@style/AppTheme.NoActionBar"
+            android:name=".photoDetail.PhotoDetailActivity"/>
+        <activity
+            android:name=".albumList.view.AlbumListActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".userInfo.view.UserInfoActivity"
             android:theme="@style/AppTheme.NoActionBar">

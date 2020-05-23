@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.optusdemo.R
 import com.example.optusdemo.albumList.viewModel.AlbumDetailViewModel
 import com.example.optusdemo.databinding.AlbumDetailsBinding
+import com.example.optusdemo.photoDetail.PhotoDetailActivity
 import com.example.optusdemo.userInfo.view.UserInfoListAdapter
+import com.example.optusdemo.userInfo.viewModel.UserInfoViewModel
 import com.example.optusdemo.utils.OptusDemoApplication
 import java.util.ArrayList
 
@@ -26,7 +28,7 @@ class AlbumListAdapter(private var mAlbumDetailsViewModellList: ArrayList<AlbumD
     }
 
     override fun getItemCount(): Int {
-        mAlbumDetailsViewModellList!!.size
+        return mAlbumDetailsViewModellList!!.size
     }
 
     override fun onBindViewHolder(holder: AlbumListAdapter.ViewHolder, position: Int) {
@@ -45,8 +47,20 @@ class AlbumListAdapter(private var mAlbumDetailsViewModellList: ArrayList<AlbumD
         }
 
         override fun onClick(v: View?) {
-            Toast.makeText(OptusDemoApplication.context, "Pooja", Toast.LENGTH_SHORT).show()
+            var photoDetailActivityIntent: Intent =
+                Intent(OptusDemoApplication.context, PhotoDetailActivity::class.java)
+            photoDetailActivityIntent.putExtra("ALBUM_ID", albumDetailsBinding.albumDetailsViewModel!!.albumId)
+            photoDetailActivityIntent.putExtra("PHOTO_ID", albumDetailsBinding.albumDetailsViewModel!!.id)
+            photoDetailActivityIntent.putExtra("PHOTO_URL", albumDetailsBinding.albumDetailsViewModel!!.url)
+            photoDetailActivityIntent.putExtra("PHOTO_TITLE", albumDetailsBinding.albumDetailsViewModel!!.title)
+
+            OptusDemoApplication.context.startActivity(photoDetailActivityIntent)
         }
+    }
+
+    fun setArrayList(arrayList: ArrayList<AlbumDetailViewModel>) {
+        mAlbumDetailsViewModellList = arrayList
+        notifyDataSetChanged()
     }
 
 }

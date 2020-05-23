@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".photoDetail.PhotoDetailActivity"
+    android:weightSum="10"
+    android:layout_gravity="center">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_album_id"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:gravity="center"
+        android:text="TextView"
+        android:layout_marginTop="@dimen/dimen_10"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_photo_id"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:text="TextView"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:layout_below="@+id/tv_album_id"/>
+
+    <ImageView
+        android:id="@+id/iv_photo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:layout_below="@+id/tv_photo_id" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_photo_title"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:background="@color/colorCardBackground"
+        android:text="TextView"
+        android:textColor="@color/colorWhite" />
+</LinearLayout>

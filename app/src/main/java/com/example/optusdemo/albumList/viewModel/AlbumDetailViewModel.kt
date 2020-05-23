@@ -44,7 +44,7 @@ class AlbumDetailViewModel : ViewModel() {
         override fun onError(e: Throwable) {
             loading.value = false
             loadingError.value = true
-            Log.e("UserInfoListAPI", e.toString())
+            Log.e("Albu=ListAPI", e.toString())
         }
 
         override fun onNext(userInfoList: ArrayList<AlbumDetailViewModel>) {
