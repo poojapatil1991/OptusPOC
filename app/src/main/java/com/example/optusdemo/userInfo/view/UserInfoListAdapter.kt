@@ -4,7 +4,8 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.view.animation.Animation
+import android.view.animation.ScaleAnimation
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.optusdemo.R
@@ -12,7 +13,8 @@ import com.example.optusdemo.albumList.view.AlbumListActivity
 import com.example.optusdemo.databinding.UserInfoBinding
 import com.example.optusdemo.userInfo.viewModel.UserInfoViewModel
 import com.example.optusdemo.utils.OptusDemoApplication
-import java.util.ArrayList
+import java.util.*
+
 
 class UserInfoListAdapter(private var mUserInfoViewModellList: ArrayList<UserInfoViewModel>?) :
     RecyclerView.Adapter<UserInfoListAdapter.ViewHolder>() {
@@ -29,6 +31,7 @@ class UserInfoListAdapter(private var mUserInfoViewModellList: ArrayList<UserInf
         val userInfoViewModel = mUserInfoViewModellList!![position]
         viewHolder.bind(userInfoViewModel)
         viewHolder.itemView.setOnClickListener(viewHolder)
+        setAnimation(viewHolder.itemView,position)
     }
 
     // View holder representing single row in list
@@ -55,5 +58,24 @@ class UserInfoListAdapter(private var mUserInfoViewModellList: ArrayList<UserInf
 
     override fun getItemCount(): Int {
         return mUserInfoViewModellList!!.size
+    }
+    protected var mLastPosition = -1
+    protected fun setAnimation(viewToAnimate: View, position: Int) {
+        if (position > mLastPosition) {
+            val anim = ScaleAnimation(
+                0.0f,
+                1.0f,
+                0.0f,
+                1.0f,
+                Animation.RELATIVE_TO_SELF,
+                0.5f,
+                Animation.RELATIVE_TO_SELF,
+                0.5f
+            )
+            anim.duration =
+                Random().nextInt(501).toLong() //to make duration random number between [0,501)
+            viewToAnimate.startAnimation(anim)
+            mLastPosition = position
+        }
     }
 }

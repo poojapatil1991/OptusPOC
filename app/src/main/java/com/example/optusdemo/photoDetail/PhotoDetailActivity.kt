@@ -3,7 +3,7 @@ package com.example.optusdemo.photoDetail
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.optusdemo.R
-import com.example.optusdemo.utils.GlideImageDownloader
+import com.example.optusdemo.utils.PiccassoImageDownloader
 import kotlinx.android.synthetic.main.activity_photo_detail.*
 
 class PhotoDetailActivity : AppCompatActivity() {
@@ -23,7 +23,7 @@ class PhotoDetailActivity : AppCompatActivity() {
 
         tv_album_id.text= "Album Id: "+albumID
         tv_photo_id.text= "Album Id: "+photoID
-        GlideImageDownloader.downloadImage(iv_photo,photoUrl)
+        PiccassoImageDownloader.downloadImage(iv_photo,photoUrl)
         tv_photo_title.text = photoTitle
     }
 }

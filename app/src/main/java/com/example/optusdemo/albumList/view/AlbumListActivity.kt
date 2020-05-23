@@ -3,6 +3,7 @@ package com.example.optusdemo.albumList.view
 import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
@@ -35,7 +36,8 @@ class AlbumListActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListe
         setSupportActionBar(toolbar)
         //Toast.makeText(OptusDemoApplication.context,albumID,Toast.LENGTH_SHORT).show()
         toolbar.user_info_toolbar_title.text = "Album ID: " + albumID
-        supportActionBar!!.setDisplayShowTitleEnabled(false);
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         context = this
         mDialog = Dialog(this)
         mDialog.setCancelable(false)
@@ -98,5 +100,14 @@ class AlbumListActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListe
         if (mDialog.isShowing) {
             mDialog.hide()
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            android.R.id.home ->{
+                onBackPressed()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

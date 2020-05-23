@@ -4,17 +4,16 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.view.animation.AlphaAnimation
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.optusdemo.R
 import com.example.optusdemo.albumList.viewModel.AlbumDetailViewModel
 import com.example.optusdemo.databinding.AlbumDetailsBinding
 import com.example.optusdemo.photoDetail.PhotoDetailActivity
-import com.example.optusdemo.userInfo.view.UserInfoListAdapter
-import com.example.optusdemo.userInfo.viewModel.UserInfoViewModel
 import com.example.optusdemo.utils.OptusDemoApplication
-import java.util.ArrayList
+import java.util.*
+
 
 class AlbumListAdapter(private var mAlbumDetailsViewModellList: ArrayList<AlbumDetailViewModel>?) :
     RecyclerView.Adapter<AlbumListAdapter.ViewHolder>() {
@@ -35,6 +34,7 @@ class AlbumListAdapter(private var mAlbumDetailsViewModellList: ArrayList<AlbumD
         val albumDetailsViewModel = mAlbumDetailsViewModellList!![position]
         holder.bind(albumDetailsViewModel)
         holder.itemView.setOnClickListener(holder)
+        setFadeAnimation(holder.itemView)
     }
 
     // View holder representing single row in list
@@ -61,6 +61,12 @@ class AlbumListAdapter(private var mAlbumDetailsViewModellList: ArrayList<AlbumD
     fun setArrayList(arrayList: ArrayList<AlbumDetailViewModel>) {
         mAlbumDetailsViewModellList = arrayList
         notifyDataSetChanged()
+    }
+
+    private fun setFadeAnimation(view: View) {
+        val anim = AlphaAnimation(0.0f, 1.0f)
+        anim.duration = 1000
+        view.startAnimation(anim)
     }
 
 }

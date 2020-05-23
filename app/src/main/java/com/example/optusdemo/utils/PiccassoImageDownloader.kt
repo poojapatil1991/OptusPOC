@@ -15,7 +15,7 @@ import java.lang.Exception
 /*Class to download images from server
 Used Glide library, it provides lazy loading and caching
  */
-object GlideImageDownloader {
+object PiccassoImageDownloader {
     @JvmStatic
     @BindingAdapter("android:src")
     fun downloadImage(img: ImageView, url: String?) {
