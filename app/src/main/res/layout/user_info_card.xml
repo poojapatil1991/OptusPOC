@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data class="UserInfoBinding">
+
         <variable
             name="userInfoViewModel"
             type="com.example.optusdemo.userInfo.viewModel.UserInfoViewModel" />
@@ -12,53 +13,59 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="3dp"
-        android:layout_marginTop="@dimen/dimen_15"
         android:layout_marginLeft="@dimen/dimen_15"
+        android:layout_marginTop="@dimen/dimen_15"
         android:layout_marginRight="@dimen/dimen_15"
-        app:cardCornerRadius="@dimen/dimen_5"
-        android:background="@drawable/custom_ripple">
+        android:background="@drawable/custom_ripple"
+        android:elevation="3dp"
+        app:cardCornerRadius="@dimen/dimen_5">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:weightSum="10"
             android:background="@drawable/custom_ripple"
-            android:padding="@dimen/dimen_10">
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_10"
+            android:weightSum="10">
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_ID"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorWhite"
-                android:text="@{`ID: ` + (userInfoViewModel.id!=null?userInfoViewModel.id:`No ID`)}"
                 android:gravity="center"
-                android:textStyle="bold"
-                android:textSize="@dimen/textsize_21"/>
+                android:text="@{`ID: ` + (userInfoViewModel.id!=null?userInfoViewModel.id:`No ID`)}"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/textsize_21"
+                android:textStyle="bold" />
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorWhite"
-                android:text="@{`Name: ` + (userInfoViewModel.name!=null?userInfoViewModel.name:`No Name`)}"
                 android:gravity="left"
-                android:textSize="@dimen/textsize_14"/>
+                android:text="@{`Name: ` + (userInfoViewModel.name!=null?userInfoViewModel.name:`No Name`)}"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/textsize_14" />
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorWhite"
-                android:text="@{`Email: ` + (userInfoViewModel.email!=null?userInfoViewModel.email:`No Email`)}"
+                android:autoLink="email"
                 android:gravity="left"
-                android:textSize="@dimen/textsize_14"/>
+                android:text="@{`Email: ` + (userInfoViewModel.email!=null?userInfoViewModel.email:`No Email`)}"
+                android:textColor="@color/colorWhite"
+                android:textColorLink="@color/colorLightBlue"
+                android:textSize="@dimen/textsize_14" />
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorWhite"
-                android:text="@{`Phone: ` + (userInfoViewModel.phone!=null?userInfoViewModel.phone:`No Phone Number`)}"
                 android:gravity="left"
-                android:textSize="@dimen/textsize_14"/>
+                android:text="@{`Phone: ` + (userInfoViewModel.phone!=null?userInfoViewModel.phone:`No Phone Number`)}"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/textsize_14" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

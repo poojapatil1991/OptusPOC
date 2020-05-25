@@ -16,7 +16,7 @@ import com.example.optusdemo.utils.OptusDemoApplication
 import java.util.*
 
 
-class UserInfoListAdapter(private var mUserInfoViewModellList: ArrayList<UserInfoViewModel>?) :
+class UserInfoListAdapter(private var mUserInfoViewModelList: ArrayList<UserInfoViewModel>?) :
     RecyclerView.Adapter<UserInfoListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -28,10 +28,10 @@ class UserInfoListAdapter(private var mUserInfoViewModellList: ArrayList<UserInf
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        val userInfoViewModel = mUserInfoViewModellList!![position]
+        val userInfoViewModel = mUserInfoViewModelList!![position]
         viewHolder.bind(userInfoViewModel)
         viewHolder.itemView.setOnClickListener(viewHolder)
-        setAnimation(viewHolder.itemView,position)
+        setAnimation(viewHolder.itemView, position)
     }
 
     // View holder representing single row in list
@@ -44,7 +44,7 @@ class UserInfoListAdapter(private var mUserInfoViewModellList: ArrayList<UserInf
         }
 
         override fun onClick(v: View?) {
-            var albumListActivityIntent: Intent =
+            val albumListActivityIntent =
                 Intent(OptusDemoApplication.context, AlbumListActivity::class.java)
             albumListActivityIntent.putExtra("ALBUM_ID", userInfoBinding.userInfoViewModel!!.id)
             OptusDemoApplication.context.startActivity(albumListActivityIntent)
@@ -52,13 +52,14 @@ class UserInfoListAdapter(private var mUserInfoViewModellList: ArrayList<UserInf
     }
 
     fun setArrayList(arrayList: ArrayList<UserInfoViewModel>) {
-        mUserInfoViewModellList = arrayList
+        mUserInfoViewModelList = arrayList
         notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {
-        return mUserInfoViewModellList!!.size
+        return mUserInfoViewModelList!!.size
     }
+
     protected var mLastPosition = -1
     protected fun setAnimation(viewToAnimate: View, position: Int) {
         if (position > mLastPosition) {

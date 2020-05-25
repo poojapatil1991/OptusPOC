@@ -9,14 +9,23 @@ import com.example.optusdemo.module.ThreadModule
 import com.example.optusdemo.userInfo.UserInfoListUseCase
 import rx.Subscriber
 
-class UserInfoViewModel : ViewModel(){
+/*
+* UserInfoViewModel view model of UserInfoList activity
+*  loadingError is true if we get error while API call else it is false
+* loading is true till we get result from API, once we get result it set to false
+* userInfoListLiveData : list of user from the api
+* userInfoListUseCase :  usecase to get the data from the API
+* UserInfoListSubscriber : subscriber which observes on background thread and notifies result on main thread
+ */
+
+class UserInfoViewModel : ViewModel() {
     var id: String = " "
     var name: String = " "
     var username: String = " "
     var email: String = " "
     var phone: String = " "
     var website: String = " "
-    var address : AddressViewModel = AddressViewModel()
+    var address: AddressViewModel = AddressViewModel()
     var company: CompanyViewModel = CompanyViewModel()
 
     var loadingError = MutableLiveData<Boolean>()
@@ -37,7 +46,7 @@ class UserInfoViewModel : ViewModel(){
 
 
     /*
-   Subscriber to show image list on UI
+   Subscriber to show user list on UI
    as soon as image list downloads from server it get notifies and show list of images on UI
     */
     inner class UserInfoListSubscriber : Subscriber<ArrayList<UserInfoViewModel>>() {

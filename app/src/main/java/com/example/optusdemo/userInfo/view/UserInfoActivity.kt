@@ -2,9 +2,6 @@ package com.example.optusdemo.userInfo.view
 
 import android.app.Dialog
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.AdapterView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LifecycleOwner
@@ -20,11 +17,17 @@ import kotlinx.android.synthetic.main.activity_user_info.*
 import kotlinx.android.synthetic.main.activity_user_info.view.*
 import kotlinx.android.synthetic.main.content_user_info.*
 
+/*
+* UserInfoActivity it is used to show list of user
+* userInfoListAdapter : adapter to show user list
+* userInfoViewModel : view model for the user info activity.
+ */
+
 class UserInfoActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener,
     LifecycleOwner {
 
     private var userInfoListAdapter: UserInfoListAdapter =
-        UserInfoListAdapter(ArrayList<UserInfoViewModel>())
+        UserInfoListAdapter(ArrayList())
     private var context: UserInfoActivity? = null
     private var userInfoViewModel: UserInfoViewModel? = null
     private lateinit var mDialog: Dialog
@@ -34,13 +37,14 @@ class UserInfoActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListen
         setContentView(R.layout.activity_user_info)
         setSupportActionBar(toolbar)
         toolbar.user_info_toolbar_title.text = "User Info"
-        supportActionBar!!.setDisplayShowTitleEnabled(false);
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
+
         context = this
         mDialog = Dialog(this)
         mDialog.setCancelable(false)
         mDialog.setCanceledOnTouchOutside(false)
         swipe_refresh.setOnRefreshListener(this)
-        userInfoViewModel= ViewModelProviders.of(this).get(UserInfoViewModel::class.java)
+        userInfoViewModel = ViewModelProviders.of(this).get(UserInfoViewModel::class.java)
 
         rv_user_list!!.layoutManager = LinearLayoutManager(context)
         rv_user_list!!.adapter = userInfoListAdapter
@@ -53,10 +57,15 @@ class UserInfoActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListen
 
         userInfoViewModel!!.loading.observe(this, Observer { t: Boolean -> showLoading(t) })
         userInfoViewModel!!.userInfoListLiveData
-            .observe(this, Observer { it: ArrayList<UserInfoViewModel> ->
+            .observe(this, Observer {
                 userInfoListAdapter.setArrayList(it)
             })
     }
+
+    /*
+    * Load data from API call inside the recyclerview
+    * checks the internet connection
+     */
     private fun loadDataInRecyclerView() {
         if (NetworkConnection.isNetworkConnected()) {
             userInfoViewModel!!.getUserInfoList()
@@ -64,11 +73,15 @@ class UserInfoActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListen
             showError(true, "Check your internet connection. Please try again!!!")
         }
     }
+    /*
+    * Callback of swipe refresh layout
+     */
 
     override fun onRefresh() {
         swipe_refresh.isRefreshing = false
         loadDataInRecyclerView()
     }
+
     private fun showError(showError: Boolean, message: String) {
         if (showError) {
             Toast.makeText(

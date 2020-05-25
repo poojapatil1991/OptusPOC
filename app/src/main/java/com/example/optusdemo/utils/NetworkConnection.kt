@@ -6,13 +6,16 @@ import android.net.NetworkCapabilities
 import android.os.Build
 import com.example.optusdemo.utils.OptusDemoApplication.Companion.context
 
+/*
+*Class to chect the internet connection.
+ */
 class NetworkConnection {
     companion object {
         /**
          * checking internet is available or not
          */
         fun isNetworkConnected(): Boolean {
-            var isConnected: Boolean = false
+            var isConnected = false
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 val connectivityManager =
                     context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

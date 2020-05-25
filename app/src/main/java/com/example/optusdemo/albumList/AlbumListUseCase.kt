@@ -8,10 +8,18 @@ import com.example.optusdemo.utils.ApiInterface
 import com.example.optusdemo.utils.UseCase
 import rx.Observable
 
-class AlbumListUseCase (executorThreadI: IExecuterThread, postExecuterThread: UIThread) :
+/*
+* Usecase to get list of photos from API.
+* executorThreadI : background thread for API call
+* postExecuterThread : UI thrad to publish the result on main thread
+* apiRequest : Retrofit instance for API call
+ */
+
+class AlbumListUseCase(executorThreadI: IExecuterThread, postExecuterThread: UIThread) :
     UseCase<ArrayList<AlbumDetailViewModel>>(executorThreadI, postExecuterThread) {
     private var apiRequest: ApiInterface? = ApiModule().provideAllApi()
-    var albumId : String = ""
+    var albumId: String = ""
+
     override fun createObservable(): Observable<ArrayList<AlbumDetailViewModel>> {
         return apiRequest!!.getAlbumList(albumId.toInt())
     }

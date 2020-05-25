@@ -9,9 +9,18 @@ import com.example.optusdemo.executer.UIThread
 import com.example.optusdemo.module.ThreadModule
 import rx.Subscriber
 
+/*
+* AlbumDetailViewModel ViewModel for the AlbumList Activity.
+* loadingError is true if we get error while API call else it is false
+* loading is true till we get result from API, once we get result it set to false
+* albumDetailsListLiveData gives the list of photos inside the album
+* albumListListUseCase is used to call the API
+* AlbumListSubscriber subscriber observes on background thread and publish result on UI thread
+ */
+
 class AlbumDetailViewModel : ViewModel() {
     var albumId: String = ""
-    var id : String = ""
+    var id: String = ""
     var title: String = ""
     var url: String = ""
     var thumbnailUrl: String = ""
@@ -26,7 +35,7 @@ class AlbumDetailViewModel : ViewModel() {
     private val albumListListUseCase: AlbumListUseCase =
         AlbumListUseCase(executorThread, uiThread)
 
-    fun getalbumList(albumID: String) {
+    fun getAlbumList(albumID: String) {
         loadingError.value = false
         loading.value = true
         albumListListUseCase.albumId = albumID
@@ -35,16 +44,17 @@ class AlbumDetailViewModel : ViewModel() {
 
 
     /*
-   Subscriber to show image list on UI
-   as soon as image list downloads from server it get notifies and show list of images on UI
+   *Subscriber to show image list on UI
+   *as soon as image list downloads from server it get notifies and show list of images on UI
     */
+
     inner class AlbumListSubscriber : Subscriber<ArrayList<AlbumDetailViewModel>>() {
 
         override fun onCompleted() {}
         override fun onError(e: Throwable) {
             loading.value = false
             loadingError.value = true
-            Log.e("Albu=ListAPI", e.toString())
+            Log.e("AlbumListAPI", e.toString())
         }
 
         override fun onNext(userInfoList: ArrayList<AlbumDetailViewModel>) {

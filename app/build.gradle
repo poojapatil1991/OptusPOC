@@ -59,4 +59,5 @@ dependencies {
     implementation 'io.reactivex:rxandroid:1.1.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.3.0-beta02'
 }

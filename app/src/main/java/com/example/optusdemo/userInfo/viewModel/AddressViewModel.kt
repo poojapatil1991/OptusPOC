@@ -1,7 +1,6 @@
 package com.example.optusdemo.userInfo.viewModel
 
 import androidx.lifecycle.ViewModel
-import com.example.optusdemo.userInfo.model.GeoLocation
 
 class AddressViewModel : ViewModel() {
     var street: String = " "

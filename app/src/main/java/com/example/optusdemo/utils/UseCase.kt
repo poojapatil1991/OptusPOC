@@ -7,7 +7,10 @@ import rx.Subscriber
 import rx.Subscription
 import rx.subscriptions.Subscriptions
 
-abstract class UseCase  <T>(executorThreadI: IExecuterThread, postExecutionThread: UIThread) :
+/*
+* Base usecase class.
+ */
+abstract class UseCase<T>(executorThreadI: IExecuterThread, postExecutionThread: UIThread) :
     BaseInteractor<T> {
     private var executorThreadI: IExecuterThread? = null
     private var postExecutionThread: UIThread? = null

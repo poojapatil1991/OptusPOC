@@ -9,6 +9,10 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
+/*
+* Creates the instance of Retrofit for API call and provides method to call the API
+ */
+
 class ApiModule {
 
     private var retrofit: Retrofit? = null

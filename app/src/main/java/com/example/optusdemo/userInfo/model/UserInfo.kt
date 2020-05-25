@@ -7,6 +7,6 @@ class UserInfo {
     var email: String = " "
     var phone: String = " "
     var website: String = " "
-    var address : Address = Address()
-    var company : Company = Company()
+    var address: Address = Address()
+    var company: Company = Company()
 }

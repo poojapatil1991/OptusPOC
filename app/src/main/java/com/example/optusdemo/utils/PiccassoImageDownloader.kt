@@ -1,19 +1,14 @@
 package com.example.optusdemo.utils
 
-import android.app.ProgressDialog
-import android.util.Log
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.example.optusdemo.R
-import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-import java.lang.Exception
 
 
 /*Class to download images from server
-Used Glide library, it provides lazy loading and caching
+Used Picasso library, it provides lazy loading and caching
  */
 object PiccassoImageDownloader {
     @JvmStatic
@@ -33,7 +28,7 @@ object PiccassoImageDownloader {
         } else {
             Picasso.get()
                 .load(R.mipmap.ic_launcher)
-                .into(img);
+                .into(img)
         }
     }
 
