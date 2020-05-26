@@ -13,21 +13,35 @@ import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
 import com.example.optusdemo.R
+import com.example.optusdemo.albumList.view.AlbumListActivity
+import com.example.optusdemo.photoDetail.PhotoDetailActivity
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.TypeSafeMatcher
+import org.junit.After
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class PhotoDetailActivity {
+class PhotoDetailActivityTest {
 
     @Rule
     @JvmField
-    var mActivityTestRule = ActivityTestRule(UserInfoActivity::class.java)
+    var mActivityTestRule = ActivityTestRule(PhotoDetailActivity::class.java)
+    lateinit var mPhotoDetailActivity: PhotoDetailActivity
+
+    @Before
+    fun setUp() {
+        mPhotoDetailActivity = mActivityTestRule.activity
+    }
+
+    @After
+    fun tearDown() {
+    }
 
     @Test
     fun photoDetailActivity() {

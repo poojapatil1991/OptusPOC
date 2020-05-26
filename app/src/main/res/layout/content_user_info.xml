@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorActivityBackground"
+        android:background="@color/colorWhite"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -18,13 +18,13 @@
             android:id="@+id/swipe_refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorActivityBackground">
+            android:background="@color/colorWhite">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_user_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/colorActivityBackground">
+                android:background="@color/colorWhite">
 
             </androidx.recyclerview.widget.RecyclerView>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

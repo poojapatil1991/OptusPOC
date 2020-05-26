@@ -35,7 +35,7 @@ class UserInfoViewModel : ViewModel() {
     private val uiThread: UIThread = ThreadModule().providePostExecutionThread()
     private val executorThread: IExecuterThread = ThreadModule().provideExecutorThread()
 
-    private val userInfoListUseCase: UserInfoListUseCase =
+    var userInfoListUseCase: UserInfoListUseCase =
         UserInfoListUseCase(executorThread, uiThread)
 
     fun getUserInfoList() {

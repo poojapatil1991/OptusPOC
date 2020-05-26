@@ -55,7 +55,7 @@
                 android:gravity="left"
                 android:text="@{`Email: ` + (userInfoViewModel.email!=null?userInfoViewModel.email:`No Email`)}"
                 android:textColor="@color/colorWhite"
-                android:textColorLink="@color/colorLightBlue"
+                android:textColorLink="@color/colorAccent"
                 android:textSize="@dimen/textsize_14" />
 
             <com.google.android.material.textview.MaterialTextView

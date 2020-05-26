@@ -3,23 +3,28 @@ package com.example.optusdemo.userInfo.view
 
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
+import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
 import com.example.optusdemo.R
+import com.example.optusdemo.albumList.view.AlbumListActivity
+import kotlinx.android.synthetic.main.content_user_info.*
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.TypeSafeMatcher
 import org.hamcrest.core.IsInstanceOf
-import org.junit.Rule
-import org.junit.Test
+import org.junit.*
 import org.junit.runner.RunWith
 
 @LargeTest
@@ -28,8 +33,48 @@ class AlbumListActivityTest {
 
     @Rule
     @JvmField
-    var mActivityTestRule = ActivityTestRule(UserInfoActivity::class.java)
+    var mActivityTestRule = ActivityTestRule(AlbumListActivity::class.java)
+    lateinit var mAlbumListActivity: AlbumListActivity
 
+    @Before
+    fun setUp() {
+        mAlbumListActivity = mActivityTestRule.activity
+    }
+
+    @Test
+    fun onCreate() {
+        var rvUserList = mAlbumListActivity.rv_user_list
+        Assert.assertNotNull(rvUserList)
+    }
+
+    @Test
+    fun testSwipeRefresh(){
+        onView(withId(R.id.swipe_refresh)).perform(ViewActions.swipeDown())
+    }
+
+    @Test
+    fun testRecyclerViewScrollUp(){
+        onView(withId(R.id.rv_user_list)).perform(ViewActions.swipeUp())
+    }
+
+    @Test
+    fun testRecyclerViewScrollDown(){
+        onView(withId(R.id.rv_user_list)).perform(ViewActions.swipeDown())
+    }
+
+    @Test
+    fun testRecyclerViewScrolling(){
+        onView(withId(R.id.rv_user_list)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+    }
+    @Test
+    fun testActionBarTitleDisplay(){
+        val actionBar: ActionBar?= mAlbumListActivity.supportActionBar
+        Assert.assertNotNull(actionBar!!.title)
+    }
+
+    @After
+    fun tearDown() {
+    }
     @Test
     fun albumListActivityTest2() {
         val recyclerView = onView(
@@ -150,6 +195,7 @@ class AlbumListActivityTest {
         )
         textView2.check(matches(isDisplayed()))
     }
+
 
     private fun childAtPosition(
         parentMatcher: Matcher<View>, position: Int
