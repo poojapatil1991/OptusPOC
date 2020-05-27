@@ -80,6 +80,9 @@ class AlbumListAdapter(private var mAlbumDetailsViewModelList: ArrayList<AlbumDe
         notifyDataSetChanged()
     }
 
+    /*
+    * Animation to load the card
+     */
     private fun setFadeAnimation(view: View) {
         val anim = AlphaAnimation(0.0f, 1.0f)
         anim.duration = 1000

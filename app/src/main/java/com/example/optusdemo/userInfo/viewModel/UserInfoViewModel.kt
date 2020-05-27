@@ -7,6 +7,7 @@ import com.example.optusdemo.executer.IExecuterThread
 import com.example.optusdemo.executer.UIThread
 import com.example.optusdemo.module.ThreadModule
 import com.example.optusdemo.userInfo.UserInfoListUseCase
+import com.example.optusdemo.utils.OptusDemoApplication
 import rx.Subscriber
 
 /*
@@ -18,7 +19,7 @@ import rx.Subscriber
 * UserInfoListSubscriber : subscriber which observes on background thread and notifies result on main thread
  */
 
-class UserInfoViewModel : ViewModel() {
+class UserInfoViewModel() : ViewModel() {
     var id: String = " "
     var name: String = " "
     var username: String = " "

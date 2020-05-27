@@ -2,16 +2,13 @@ package com.example.optusdemo.userInfo.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import com.example.optusdemo.userInfo.UserInfoListUseCase
-import com.google.gson.Gson
 import com.nhaarman.mockito_kotlin.whenever
 import org.junit.After
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
-import org.junit.Assert.*
 import org.mockito.Mock
-import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import org.mockito.stubbing.OngoingStubbing
 import rx.Observable

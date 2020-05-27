@@ -12,6 +12,7 @@
         android:layout_height="0dp"
         android:gravity="center"
         android:textSize="@dimen/textsize_14"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/guidelineHorizontalAlbum"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,6 +22,7 @@
         android:layout_height="0dp"
         android:gravity="center"
         android:textSize="@dimen/textsize_14"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/guidelineHorizontalPhoto"
         app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontalAlbum" />
 
@@ -28,7 +30,9 @@
         android:id="@+id/iv_photo"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/colorDarkGray"
+        android:layout_marginLeft="@dimen/dimen_10"
+        android:layout_marginRight="@dimen/dimen_10"
+        android:background="@color/colorImagePlaceHolder"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontal"
         app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalPhoto"
         app:srcCompat="@mipmap/ic_launcher" />
@@ -38,10 +42,15 @@
         android:id="@+id/tv_photo_title"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:paddingLeft="@dimen/dimen_10"
+        android:paddingRight="@dimen/dimen_10"
         android:background="@color/colorCardBackground"
         android:gravity="center"
         android:textColor="@color/colorWhite"
         app:autoSizeMinTextSize="@dimen/textsize_12"
+        android:layout_marginLeft="@dimen/dimen_10"
+        android:layout_marginRight="@dimen/dimen_10"
+        android:layout_marginBottom="@dimen/dimen_10"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontal" />
 

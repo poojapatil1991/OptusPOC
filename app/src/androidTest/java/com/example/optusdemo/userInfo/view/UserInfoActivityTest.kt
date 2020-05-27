@@ -15,6 +15,8 @@ import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
 import com.example.optusdemo.R
 import com.example.optusdemo.albumList.view.AlbumListActivity
+import kotlinx.android.synthetic.main.activity_user_info.*
+import kotlinx.android.synthetic.main.activity_user_info.view.*
 import kotlinx.android.synthetic.main.content_user_info.*
 import org.hamcrest.Description
 import org.hamcrest.Matcher
@@ -46,27 +48,40 @@ class UserInfoActivityTest {
 
     @Test
     fun testSwipeRefresh(){
+        Thread.sleep(7000)
+        var rvUserList = mUserInfoActivity.rv_user_list
         onView(withId(R.id.swipe_refresh)).perform(ViewActions.swipeDown())
+        Assert.assertNotNull(rvUserList)
     }
 
     @Test
     fun testRecyclerViewScrollUp(){
+        Thread.sleep(7000)
+        var rvUserList = mUserInfoActivity.rv_user_list
         onView(withId(R.id.rv_user_list)).perform(ViewActions.swipeUp())
+        Assert.assertNotNull(rvUserList)
     }
 
     @Test
     fun testRecyclerViewScrollDown(){
+        Thread.sleep(7000)
+        var rvUserList = mUserInfoActivity.rv_user_list
         onView(withId(R.id.rv_user_list)).perform(ViewActions.swipeDown())
+        Assert.assertNotNull(rvUserList)
     }
 
     @Test
     fun testRecyclerViewScrolling(){
+        Thread.sleep(7000)
+        var rvUserList = mUserInfoActivity.rv_user_list
         onView(withId(R.id.rv_user_list)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        Assert.assertNotNull(rvUserList)
     }
     @Test
     fun testActionBarTitleDisplay(){
-        val actionBar: ActionBar?= mUserInfoActivity.supportActionBar
-        Assert.assertNotNull(actionBar!!.title)
+        Thread.sleep(9000)
+        val title = mUserInfoActivity.toolbar.user_info_toolbar_title
+        Assert.assertNotNull(title)
     }
 
     @After
@@ -74,6 +89,7 @@ class UserInfoActivityTest {
     }
     @Test
     fun userInfoActivityTest() {
+        Thread.sleep(7000)
         val viewGroup = onView(
             allOf(
                 withId(R.id.toolbar),

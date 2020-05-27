@@ -35,14 +35,14 @@ class AlbumListActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListe
     private var context: AlbumListActivity? = null
     private var albumDetailsViewModel: AlbumDetailViewModel? = null
     private lateinit var mDialog: Dialog
-    private lateinit var albumID: String
+    lateinit var albumID: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_info)
         albumID = intent.getStringExtra("ALBUM_ID")
         setSupportActionBar(toolbar)
-        toolbar.user_info_toolbar_title.text = "Album ID: " + albumID
+        toolbar.user_info_toolbar_title.text = resources.getString(R.string.album_id) + albumID
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 

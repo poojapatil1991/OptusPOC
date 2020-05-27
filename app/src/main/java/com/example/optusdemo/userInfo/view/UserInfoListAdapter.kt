@@ -15,6 +15,10 @@ import com.example.optusdemo.userInfo.viewModel.UserInfoViewModel
 import com.example.optusdemo.utils.OptusDemoApplication
 import java.util.*
 
+/*
+* UserInfoListAdapter adapter for the user ino list
+* mUserInfoViewModelList : list of user data
+ */
 
 class UserInfoListAdapter(private var mUserInfoViewModelList: ArrayList<UserInfoViewModel>?) :
     RecyclerView.Adapter<UserInfoListAdapter.ViewHolder>() {
@@ -43,6 +47,10 @@ class UserInfoListAdapter(private var mUserInfoViewModelList: ArrayList<UserInfo
             userInfoBinding.executePendingBindings()
         }
 
+        /*
+        * Onclick listner for single item in recycler view
+         */
+
         override fun onClick(v: View?) {
             val albumListActivityIntent =
                 Intent(OptusDemoApplication.context, AlbumListActivity::class.java)
@@ -50,6 +58,7 @@ class UserInfoListAdapter(private var mUserInfoViewModelList: ArrayList<UserInfo
             OptusDemoApplication.context.startActivity(albumListActivityIntent)
         }
     }
+
 
     fun setArrayList(arrayList: ArrayList<UserInfoViewModel>) {
         mUserInfoViewModelList = arrayList
@@ -61,6 +70,11 @@ class UserInfoListAdapter(private var mUserInfoViewModelList: ArrayList<UserInfo
     }
 
     protected var mLastPosition = -1
+
+    /*
+    * Animation for loading card.
+     */
+
     protected fun setAnimation(viewToAnimate: View, position: Int) {
         if (position > mLastPosition) {
             val anim = ScaleAnimation(

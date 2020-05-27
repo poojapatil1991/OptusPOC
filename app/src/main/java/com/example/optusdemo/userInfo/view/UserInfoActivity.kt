@@ -36,7 +36,7 @@ class UserInfoActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListen
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_info)
         setSupportActionBar(toolbar)
-        toolbar.user_info_toolbar_title.text = "User Info"
+        toolbar.user_info_toolbar_title.text = resources.getString(R.string.user_info)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 
         context = this

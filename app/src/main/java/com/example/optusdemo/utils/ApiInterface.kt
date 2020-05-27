@@ -11,10 +11,11 @@ import rx.Observable
  */
 
 interface ApiInterface {
-    // This API returns the list of employees from server
+    // This API returns the list of users from server
     @GET("/users")
     fun getUserInfoList(): Observable<ArrayList<UserInfoViewModel>>
 
+    // This API returns the list of photos from album
     @GET("/photos")
     fun getAlbumList(@Query("albumId") album_id: Int): Observable<ArrayList<AlbumDetailViewModel>>
 }

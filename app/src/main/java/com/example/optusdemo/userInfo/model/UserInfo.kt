@@ -1,5 +1,8 @@
 package com.example.optusdemo.userInfo.model
 
+/*
+* Model class for user info
+ */
 class UserInfo {
     var id: String = " "
     var name: String = " "

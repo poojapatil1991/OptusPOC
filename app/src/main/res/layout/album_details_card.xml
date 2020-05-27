@@ -13,9 +13,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dimen_40"
+        android:layout_marginLeft="@dimen/dimen_20"
         android:layout_marginTop="@dimen/dimen_20"
-        android:layout_marginRight="@dimen/dimen_40"
+        android:layout_marginRight="@dimen/dimen_20"
         android:background="@drawable/custom_ripple"
         android:elevation="3dp"
         app:cardCornerRadius="@dimen/dimen_5">
@@ -38,7 +38,7 @@
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_name"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="6"
                 android:gravity="left|center_vertical"
                 android:text="@{ (albumDetailsViewModel.title!=null?albumDetailsViewModel.title:`No Title`)}"
